@@ -1,6 +1,6 @@
 let
   pkgs = import <nixpkgs> {};
-  default = ./default.nix {};
+  default = import ./default.nix {};
 
   jobs = rec {
 
