@@ -10,7 +10,7 @@ let
       pkgs.releaseTools.nixBuild {
         name = "sbtix";
         src = <githubSource>;
-        buildInputs = [<nixpkgs> ./default.nix];
+        buildInputs = [./default.nix];
       };
   };
 in
