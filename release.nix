@@ -1,6 +1,7 @@
 let
   pkgs = import <nixpkgs> {};
-
+  default = import ./default.nix;
+  
   jobs = rec {
 
     build =
@@ -10,7 +11,7 @@ let
       pkgs.releaseTools.nixBuild {
         name = "sbtix";
         src = <githubSource>;
-        buildInputs = [./default.nix {}];
+        buildInputs = [ default ];
       };
   };
 in
