@@ -79,21 +79,22 @@ let
     ${sbtixScript}/bin/sbtix genComposition
   '';
 
-in
-pkgs.releaseTools.nixBuild {
-  name = "sbtix-${version}";
-  
-  src = ./.;
+in {
+ sbtix =	pkgs.releaseTools.nixBuild {
+		  name = "sbtix-${version}";
+		  
+		  src = ./.;
 
-  phases = [ "installPhase" ];
+		  phases = [ "installPhase" ];
 
-  installPhase =''
-    mkdir -p $out/bin
-    ln -s ${sbtixScript}/bin/sbtix $out/bin/.
-    ln -s ${sbtixGenScript}/bin/sbtix-gen $out/bin/.
-    ln -s ${sbtixGenallScript}/bin/sbtix-gen-all $out/bin/.
-    ln -s ${sbtixGenall2Script}/bin/sbtix-gen-all2 $out/bin/.
-    ln -s ${sbtixPluginRepo}/plugin-repo $out
-    ln -s ${pluginsSbtix} $out/sbtix_plugin.sbt
-  '';
+		  installPhase =''
+		    mkdir -p $out/bin
+		    ln -s ${sbtixScript}/bin/sbtix $out/bin/.
+		    ln -s ${sbtixGenScript}/bin/sbtix-gen $out/bin/.
+		    ln -s ${sbtixGenallScript}/bin/sbtix-gen-all $out/bin/.
+		    ln -s ${sbtixGenall2Script}/bin/sbtix-gen-all2 $out/bin/.
+		    ln -s ${sbtixPluginRepo}/plugin-repo $out
+		    ln -s ${pluginsSbtix} $out/sbtix_plugin.sbt
+		  '';
+		};
 }
